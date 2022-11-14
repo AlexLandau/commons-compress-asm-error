@@ -4,6 +4,7 @@ import org.apache.commons.compress.compressors.pack200.Pack200CompressorOutputSt
 import org.apache.commons.compress.compressors.xz.XZCompressorOutputStream;
 import org.apache.commons.compress.harmony.pack200.Segment;
 import org.apache.commons.compress.utils.IOUtils;
+import org.objectweb.asm.Opcodes;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -17,7 +18,7 @@ public class Repros {
     }
 
     public static void doSomePacking() {
-        File jarFile = new File("gradle/wrapper/gradle-wrapper.jar");
+        File jarFile = new File("resources/docx4j-JAXB-ReferenceImpl-11.2.9.jar");
         try (OutputStream archiveStream = new ByteArrayOutputStream();
              FileInputStream jarStream = new FileInputStream(jarFile);
              XZCompressorOutputStream xzStream = new XZCompressorOutputStream(archiveStream);

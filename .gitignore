@@ -5,3 +5,8 @@
 build
 
 .idea
+
+# Temp files for OTF packing tests
+resources/packed.pack
+resources/roundtrip.jar
+resources/*.manual.*

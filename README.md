@@ -2,6 +2,8 @@
 
 ## Update: Repro for commons-compress 1.22 failing with fix COMPRESS-582
 
+(Note: This is a modified repro contributed by @bmarcaur.)
+
 https://issues.apache.org/jira/browse/COMPRESS-582
 
 I added an OSS jar `docx4j-JAXB-ReferenceImpl-11.2.9.jar` (a jar that we use internally). Attempting to pack this jar yields the following stacktrace:
@@ -23,6 +25,8 @@ Digging in slightly, we notice that in the fix linked in the ticket the [ASM_API
 
 
 ## Repro for commons-compress 1.21 failing with asm 4.0+
+
+(This was fixed by the 1.22 release for the example given, but see the above issue that still affects jars using certain Java 11 language features.)
 
 Trying to use the Pack200CompressorOutputStream with asm 4.0+ on the classpath results in the error: `java.lang.IncompatibleClassChangeError: class org.apache.commons.compress.harmony.pack200.Segment can not implement org.objectweb.asm.ClassVisitor, because it is not an interface (org.objectweb.asm.ClassVisitor is in unnamed module of loader 'app')`
 

@@ -25,7 +25,8 @@ public class ManualTesting {
     private static final File HW_JAR = new File("resources/hw.jar");
     private static final File GRADLE_JAR = new File("resources/gradle-wrapper.jar");
 
-    private static final File TARGET_JAR = HW_JAR;
+    // Change this variable to try out other JARs
+    private static final File TARGET_JAR = GRADLE_JAR;
 
     private static final File PACKED_JAR = new File("resources/packed.pack");
     private static final File ROUNDTRIP_JAR = new File("resources/roundtrip.jar");
@@ -33,16 +34,18 @@ public class ManualTesting {
 
 
     public static void main(String[] args) throws IOException {
-        // convertAndCompare();
+        convertAndCompare();
 
-        compareManual();
+        // Comment this out if you want to use the same comparison for files you manually packed
+        // compareManual();
     }
 
     private static void convertAndCompare() throws IOException {
         PACKED_JAR.delete();
         ROUNDTRIP_JAR.delete();
 
-        Segment.ASM_API = Opcodes.ASM7;
+        // Comment this line out to test using ASM7
+        // Segment.ASM_API = Opcodes.ASM7;
         doSomePacking();
         doSomeUnpacking();
 
